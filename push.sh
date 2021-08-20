@@ -1,5 +1,5 @@
-ECHO "Escreva o texto do comit"
+ECHO "Escreva o texto do commit"
 read varName
 git add .
-git commit -m varName
+git commit -m echo $varname
 git push
