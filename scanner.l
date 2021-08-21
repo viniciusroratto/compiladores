@@ -85,6 +85,6 @@ true                          { return TK_LIT_TRUE; }
 %%
      /* retorna o número de linhas*/
 int get_line_number(void){
-    printf(linha); /*remover antes de entregar*/
+    printf("%d",linha); /*remover antes de entregar*/
     return linha;
 }
