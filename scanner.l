@@ -14,7 +14,7 @@ BRANCO [ \t]
 DIGITO [0-9]
 INTEIRO {DIGITO}+
 EXPONENCIAL [eE][+-]?INTEIRO
-FLOAT {INTEIRO}("."{INTEIRO})?{EXPONENCIAL}
+FLOAT {INTEIRO}*(\.{INTEIRO})?{EXPONENCIAL}
 
 %%
 BRANCO { } /* Nao fazer nada se espaço em branco ou tab. */
@@ -68,8 +68,9 @@ protected                    { return TK_PR_PROTECTED; }
 false                         { return TK_LIT_FALSE; }
 true                          { return TK_LIT_TRUE; }
 
-[-+]*{INTEIRO}                { return TK_LIT_INT; }
 {FLOAT}                       { return TK_LIT_FLOAT; }
+[-+]*{INTEIRO}                { return TK_LIT_INT; }
+
 
 '([^'])'                      { return TK_LIT_CHAR; }
 \"[^\"]*\"                    { return TK_LIT_STRING; }
