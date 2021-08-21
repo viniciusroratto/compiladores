@@ -19,8 +19,15 @@ REAL {INTEIRO}("."{INTEIRO})?{EXPONENCIAL}?
 %%
 BRANCO { } /* Nao fazer nada se espaço em branco ou tab. */
 \n    {linha++;} /*incrementa linha a cada */
-"//" { } /* ignora comentários de linha simples. Mas o que acontece com a contagem de linhas? Pesquisar. */
- /* como fazer comentário de linhas múltiplas? Pesquisar.*/
+"//".* { } /* ignora comentários de linha simples. */
+
+ /* fonte para comentário de linhas múltiplas -> http:\//dinosaur.compilertools.net/flex/manpage.html */
+"/*"        BEGIN(comentario);
+<comentario>[^*\n]*
+<comentario>"*"+[^*/\n]*
+<comentario>\n           ++linha;
+<comentario>"*"+"/"       BEGIN(INITIAL);
+
     
     /*Operadores Compostos*/
 "<="                          { return TK_OC_LE; }
@@ -80,6 +87,7 @@ true                          { return TK_LIT_TRUE; }
 [a-zA-Z_]+[a-zA-Z0-9_]*       { return TK_IDENTIFICADOR; }
 
   /*Identificar erros?*/
+.                              {return TOKEN_ERRO;}
 
 
 %%
