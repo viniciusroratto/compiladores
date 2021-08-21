@@ -1,9 +1,11 @@
 %{
 #include "tokens.h"
+#include "main.c"
 
 int linha = 1;
 
 int get_line_number(void);
+
 
 %}
 
