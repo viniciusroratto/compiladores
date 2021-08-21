@@ -5,7 +5,7 @@
 int linha = 1;
 
 int get_line_number(void);
-
+%x comentario
 
 %}
 
