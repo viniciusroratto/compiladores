@@ -62,8 +62,7 @@ protected                    { return TK_PR_PROTECTED; }
  /*Caracteres Especiais
     o que fazer com eles?*/
     
-    /*Identificador*/
-[a-zA-Z_]+[a-zA-Z0-9_]*       { return TK_IDENTIFICADOR; }
+
 
  /*Literais*/
 false                         { return TK_LIT_FALSE; }
@@ -74,6 +73,10 @@ true                          { return TK_LIT_TRUE; }
 
 '([^'])'                      { return TK_LIT_CHAR; }
 \"[^\"]*\"                    { return TK_LIT_STRING; }
+
+
+ /*Identificador*/
+[a-zA-Z_]+[a-zA-Z0-9_]*       { return TK_IDENTIFICADOR; }
 
   /*Identificar erros?*/
 
