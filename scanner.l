@@ -64,14 +64,14 @@ protected                    { return TK_PR_PROTECTED; }
 [a-zA-Z_]+[a-zA-Z0-9_]*       { return TK_IDENTIFICADOR; }
 
  /*Literais*/
-False                           { return TK_LIT_FALSE }
-True                            { return TK_LIT_TRUE }
+False                           { return TK_LIT_FALSE; }
+True                            { return TK_LIT_TRUE; }
 
-[-+]*{INTEIRO}                  { return TK_LIT_INT } //int
-{FLOAT}                         { return TK_LIT_FLOAT } //Float
+[-+]*{INTEIRO}                  { return TK_LIT_INT; }
+{FLOAT}                         { return TK_LIT_FLOAT; }
 
-'([^'])'                        { return TK_LIT_CHAR }//char
-\"[^\"]*\"                      { return TK_LIT_STRING }//string
+'([^'])'                        { return TK_LIT_CHAR; }
+\"[^\"]*\"                      { return TK_LIT_STRING; }
 
   /*Identificar erros?*/
 
