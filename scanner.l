@@ -16,7 +16,9 @@ FLOAT {INTEIRO}("."{INTEIRO})?{EXPONENCIAL}
 
 %%
 BRANCO { } // Nao fazer nada se espaço em branco ou tab.
-"\n"    {linha++} //incrementa linha a cada \n
+\n    {linha++} //incrementa linha a cada \n
+"//" { } // ignora comentários de linha simples. Mas o que acontece com a contagem de linhas?
+ // como fazer comentário de linhas múltiplas? Pesquisar.
     
     //Operadores Compostos
 "<="                          { return TK_OC_LE; }
@@ -56,6 +58,7 @@ public                       { return TK_PR_PUBLIC; }
 protected                    { return TK_PR_PROTECTED; }
 
     //Caracteres Especiais
+    // o que fazer com eles?
     
     //Identificador
 [a-zA-Z_]+[a-zA-Z0-9_]*       { return TK_IDENTIFICADOR; }
@@ -67,12 +70,8 @@ True                            { return TK_LIT_TRUE }
 [-+]*{INTEIRO}                  { return TK_LIT_INT } //int
 {FLOAT}                         { return TK_LIT_FLOAT } //Float
 
-'(.|[^'\n\t])'                  { return TK_LIT_CHAR }//char
-    //cade as string?
-
-
-
-    
+'([^'])'                        { return TK_LIT_CHAR }//char
+\"[^\"]*\"                      { return TK_LIT_STRING }//string
 
 
 %%
