@@ -17,7 +17,7 @@ FLOAT {INTEIRO}("."{INTEIRO})?{EXPONENCIAL}
 %%
 BRANCO { } // Nao fazer nada se espaço em branco ou tab.
 \n    {linha++} //incrementa linha a cada \n
-"//" { } // ignora comentários de linha simples. Mas o que acontece com a contagem de linhas?
+"//" { } // ignora comentários de linha simples. Mas o que acontece com a contagem de linhas? Pesquisar.
  // como fazer comentário de linhas múltiplas? Pesquisar.
     
     //Operadores Compostos
@@ -72,6 +72,8 @@ True                            { return TK_LIT_TRUE }
 
 '([^'])'                        { return TK_LIT_CHAR }//char
 \"[^\"]*\"                      { return TK_LIT_STRING }//string
+
+    //Identificar erros?
 
 
 %%
