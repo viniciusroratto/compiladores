@@ -5,10 +5,11 @@
 int linha = 1;
 
 int get_line_number(void);
-%x comentario
+
 
 %}
 
+%x comentario
 /*como visto na aula N2A4.*/
 BRANCO [ \t]+
 DIGITO [0-9]
