@@ -10,11 +10,11 @@ int get_line_number(void);
 %}
 
 /*como visto na aula N2A4.*/
-BRANCO [ \t]
+BRANCO [ \t]+
 DIGITO [0-9]
 INTEIRO {DIGITO}+
-EXPONENCIAL [eE][+-]?INTEIRO
-FLOAT {INTEIRO}*(\.{INTEIRO})?{EXPONENCIAL}
+EXPONENCIAL [eE][+-]?{INTEIRO}
+REAL {INTEIRO}("."{INTEIRO})?{EXPONENCIAL}?
 
 %%
 BRANCO { } /* Nao fazer nada se espaço em branco ou tab. */
@@ -68,8 +68,8 @@ protected                    { return TK_PR_PROTECTED; }
 false                         { return TK_LIT_FALSE; }
 true                          { return TK_LIT_TRUE; }
 
-{FLOAT}                       { return TK_LIT_FLOAT; }
 [-+]*{INTEIRO}                { return TK_LIT_INT; }
+{REAL}                       { return TK_LIT_FLOAT; }
 
 
 '([^'])'                      { return TK_LIT_CHAR; }
@@ -85,5 +85,6 @@ true                          { return TK_LIT_TRUE; }
 %%
      /* retorna o número de linhas*/
 int get_line_number(void){
-        return linha;
+    printf(linha); /*remover antes de entregar*/
+    return linha;
 }
