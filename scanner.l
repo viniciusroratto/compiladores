@@ -16,7 +16,7 @@ FLOAT {INTEIRO}("."{INTEIRO})?{EXPONENCIAL}
 
 %%
 BRANCO { } /* Nao fazer nada se espaço em branco ou tab. */
-\n    {linha++} /*incrementa linha a cada */
+\n    {linha++;} /*incrementa linha a cada */
 "//" { } /* ignora comentários de linha simples. Mas o que acontece com a contagem de linhas? Pesquisar. */
  /* como fazer comentário de linhas múltiplas? Pesquisar.*/
     
@@ -64,14 +64,14 @@ protected                    { return TK_PR_PROTECTED; }
 [a-zA-Z_]+[a-zA-Z0-9_]*       { return TK_IDENTIFICADOR; }
 
  /*Literais*/
-False                           { return TK_LIT_FALSE; }
-True                            { return TK_LIT_TRUE; }
+false                         { return TK_LIT_FALSE; }
+true                          { return TK_LIT_TRUE; }
 
-[-+]*{INTEIRO}                  { return TK_LIT_INT; }
-{FLOAT}                         { return TK_LIT_FLOAT; }
+[-+]*{INTEIRO}                { return TK_LIT_INT; }
+{FLOAT}                       { return TK_LIT_FLOAT; }
 
-'([^'])'                        { return TK_LIT_CHAR; }
-\"[^\"]*\"                      { return TK_LIT_STRING; }
+'([^'])'                      { return TK_LIT_CHAR; }
+\"[^\"]*\"                    { return TK_LIT_STRING; }
 
   /*Identificar erros?*/
 
