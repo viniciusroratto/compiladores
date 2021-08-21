@@ -7,7 +7,7 @@ int get_line_number(void);
 
 %}
 
-//como visto na aula N2A4.
+/*como visto na aula N2A4.*/
 BRANCO [ \t]
 DIGITO [0-9]
 INTEIRO {DIGITO}+
@@ -15,12 +15,12 @@ EXPONENCIAL [eE][+-]?INTEIRO
 FLOAT {INTEIRO}("."{INTEIRO})?{EXPONENCIAL}
 
 %%
-BRANCO { } // Nao fazer nada se espaço em branco ou tab.
-\n    {linha++} //incrementa linha a cada \n
-"//" { } // ignora comentários de linha simples. Mas o que acontece com a contagem de linhas? Pesquisar.
- // como fazer comentário de linhas múltiplas? Pesquisar.
+BRANCO { } /* Nao fazer nada se espaço em branco ou tab. */
+\n    {linha++} /*incrementa linha a cada */
+"//" { } /* ignora comentários de linha simples. Mas o que acontece com a contagem de linhas? Pesquisar. */
+ /* como fazer comentário de linhas múltiplas? Pesquisar.*/
     
-    //Operadores Compostos
+    /*Operadores Compostos*/
 "<="                          { return TK_OC_LE; }
 ">="                          { return TK_OC_GE; }
 "=="                          { return TK_OC_EQ; }
@@ -30,7 +30,7 @@ BRANCO { } // Nao fazer nada se espaço em branco ou tab.
 ">>"                          { return TK_OC_SR; }
 "<<"                          { return TK_OC_SL; }
 
-    // Palavras reservadas
+ /* Palavras reservadas*/
 int                          { return TK_PR_INT; }
 float                        { return TK_PR_FLOAT; }
 bool                         { return TK_PR_BOOL; }
@@ -57,13 +57,13 @@ private                      { return TK_PR_PRIVATE; }
 public                       { return TK_PR_PUBLIC; }
 protected                    { return TK_PR_PROTECTED; }
 
-    //Caracteres Especiais
-    // o que fazer com eles?
+ /*Caracteres Especiais
+    o que fazer com eles?*/
     
-    //Identificador
+    /*Identificador*/
 [a-zA-Z_]+[a-zA-Z0-9_]*       { return TK_IDENTIFICADOR; }
 
-    //Literais
+ /*Literais*/
 False                           { return TK_LIT_FALSE }
 True                            { return TK_LIT_TRUE }
 
@@ -73,11 +73,11 @@ True                            { return TK_LIT_TRUE }
 '([^'])'                        { return TK_LIT_CHAR }//char
 \"[^\"]*\"                      { return TK_LIT_STRING }//string
 
-    //Identificar erros?
+  /*Identificar erros?*/
 
 
 %%
-// retorna o número de linhas
+     /* retorna o número de linhas*/
 int get_line_number(void){
         return linha;
 }
