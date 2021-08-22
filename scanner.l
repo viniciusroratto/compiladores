@@ -1,9 +1,15 @@
+
+
+/* INF01147 - Compiladores - Prof. Lucas Schnorr */
+/* 2021/01 - Etapa 1 */
+/* Alunos: Vinícius Roratto Carvalho & Tatiana Pacheco de Almeida */
+
+
 %{
 #include "tokens.h"
 #include "main.c"
 
 int linha = 1;
-
 int get_line_number(void);
 
 
@@ -11,14 +17,14 @@ int get_line_number(void);
 
 %x comentario
 /*como visto na aula N2A4.*/
-BRANCO [ \t]+
 DIGITO [0-9]
 INTEIRO {DIGITO}+
 EXPONENCIAL [eE][+-]?{INTEIRO}
 REAL {INTEIRO}("."{INTEIRO})?{EXPONENCIAL}?
 
 %%
-BRANCO { } /* Nao fazer nada se espaço em branco ou tab. */
+ /* BRANCO { }  Nao fazer nada se espaço em branco ou tab. */
+[ \t]
 \n    {linha++;} /*incrementa linha a cada */
 "//".* { } /* ignora comentários de linha simples. */
 
@@ -67,17 +73,41 @@ private                      { return TK_PR_PRIVATE; }
 public                       { return TK_PR_PUBLIC; }
 protected                    { return TK_PR_PROTECTED; }
 
- /*Caracteres Especiais
-    o que fazer com eles?*/
-    
+ /* Caracteres Especiais */
+
+"," 						 { return (int) ','; }
+";" 						 { return (int) ';'; }
+":" 						 { return (int) ':'; }
+"(" 						 { return (int) '('; }
+")" 					     { return (int) ')'; }
+"[" 						 { return (int) '['; }
+"]" 						 { return (int) ']'; }
+"{" 						 { return (int) '{'; }
+"}" 						 { return (int) '}'; }
+"+" 						 { return (int) '+'; }
+"-" 						 { return (int) '-'; }
+"|" 						 { return (int) '|'; }
+"*" 						 { return (int) '*'; }
+"/" 						 { return (int) '/'; }
+"<" 						 { return (int) '<'; }
+">" 						 { return (int) '>'; }
+"=" 						 { return (int) '='; }
+"!" 						 { return (int) '!'; }
+"&" 						 { return (int) '&'; }
+"%" 						 { return (int) '%'; }
+"#" 						 { return (int) '#'; }
+"^" 						 { return (int) '^'; }
+"." 						 { return (int) '.'; }
+"$" 						 { return (int) '$'; }
 
 
- /*Literais*/
+
+ /* Literais */
 false                         { return TK_LIT_FALSE; }
 true                          { return TK_LIT_TRUE; }
 
 [-+]*{INTEIRO}                { return TK_LIT_INT; }
-{REAL}                       { return TK_LIT_FLOAT; }
+{REAL}                        { return TK_LIT_FLOAT; }
 
 
 '([^'])'                      { return TK_LIT_CHAR; }
@@ -87,12 +117,12 @@ true                          { return TK_LIT_TRUE; }
  /*Identificador*/
 [a-zA-Z_]+[a-zA-Z0-9_]*       { return TK_IDENTIFICADOR; }
 
-  /*Identificar erros?*/
-.                              {return TOKEN_ERRO;}
+ /*Identificador de Erros - tudo que ele nao reconhece retorna erro*/
+.                             {return TOKEN_ERRO;}
 
 
 %%
-     /* retorna o número de linhas*/
+ /* retorna o número de linhas*/
 int get_line_number(void){
     return linha;
 }
