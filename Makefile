@@ -3,9 +3,6 @@
   # disciplina: INF01147 - Compiladores - Prof. Lucas Schnorr
 
 
-exec: etapa1
-	 ./etapa1
-
 etapa1: lex.yy.o main.o
 	gcc lex.yy.o main.o -o etapa1 -lfl
 
@@ -19,6 +16,10 @@ main.o:
 clean:
 	rm etapa1 lex.yy.c lex.yy.o main.o
 	
-
+run: etapa1
+	 ./etapa1
+	 
+zip:
+	tar -cvzf etapa1.tgz scanner.l main.c tokens.h
 
 
