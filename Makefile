@@ -20,6 +20,6 @@ run: etapa1
 	 ./etapa1
 	 
 zip:
-	tar -cvzf etapa1.tgz scanner.l main.c tokens.h
+	tar -cvzf etapa1.tgz scanner.l main.c tokens.h makefile
 
 
