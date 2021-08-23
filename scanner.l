@@ -1,13 +1,12 @@
 
 
-/* INF01147 - Compiladores - Prof. Lucas Schnorr */
-/* 2021/01 - Etapa 1 */
-/* Alunos: Vinícius Roratto Carvalho & Tatiana Pacheco de Almeida */
+/* Nomes: Tatiana Pacheco de Almeida - Vinícius Roratto Carvalho
+Matriculas:  - 00160094
+disciplina: INF01147 - Compiladores - Prof. Lucas Schnorr  */
 
 
 %{
 #include "tokens.h"
-#include "main.c"
 
 int linha = 1;
 int get_line_number(void);
@@ -25,7 +24,7 @@ REAL {INTEIRO}("."{INTEIRO})?{EXPONENCIAL}?
 %%
  /* BRANCO { }  Nao fazer nada se espaço em branco ou tab. */
 [ \t]
-\n    {linha++;} /*incrementa linha a cada */
+\n    {linha++;} /* incrementa linha */
 "//".* { } /* ignora comentários de linha simples. */
 
  /* fonte para comentário de linhas múltiplas -> http:\//dinosaur.compilertools.net/flex/manpage.html */
@@ -79,7 +78,7 @@ protected                    { return TK_PR_PROTECTED; }
 ";" 						 { return (int) ';'; }
 ":" 						 { return (int) ':'; }
 "(" 						 { return (int) '('; }
-")" 					     	{ return (int) ')'; }
+")" 					     { return (int) ')'; }
 "[" 						 { return (int) '['; }
 "]" 						 { return (int) ']'; }
 "{" 						 { return (int) '{'; }
@@ -107,10 +106,10 @@ false                         { return TK_LIT_FALSE; }
 true                          { return TK_LIT_TRUE; }
 
 [-+]*{INTEIRO}                { return TK_LIT_INT; }
-{REAL}                        { return TK_LIT_FLOAT; }
+[-+]*{REAL}                   { return TK_LIT_FLOAT; }
 
 
-'([^'])'                      { return TK_LIT_CHAR; }
+'([\.|^'])'                    { return TK_LIT_CHAR; }
 \"[^\"]*\"                    { return TK_LIT_STRING; }
 
 

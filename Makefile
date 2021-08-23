@@ -1,9 +1,23 @@
-# Makefile temporário.
+  # Nomes: Tatiana Pacheco de Almeida - Vinícius Roratto Carvalho
+  # Matriculas:  - 00160094
+  # disciplina: INF01147 - Compiladores - Prof. Lucas Schnorr
 
-etapa1: lex.yy.c
-	gcc -o etapa1 lex.yy.c
-lex.yy.c: scanner.l
+
+exec: etapa1
+	 ./etapa1
+
+etapa1: lex.yy.o main.o
+	gcc lex.yy.o main.o -o etapa1 -lfl
+
+lex.yy.o:
 	flex scanner.l
-
+	gcc -c lex.yy.c
+	
+main.o:
+	gcc -c main.c
+	
 clean:
-	rm lex.yy.c etapa1
+	rm etapa1 lex.yy.c lex.yy.o main.o
+
+
+
