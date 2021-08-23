@@ -79,7 +79,7 @@ protected                    { return TK_PR_PROTECTED; }
 ";" 						 { return (int) ';'; }
 ":" 						 { return (int) ':'; }
 "(" 						 { return (int) '('; }
-")" 					     { return (int) ')'; }
+")" 					     	{ return (int) ')'; }
 "[" 						 { return (int) '['; }
 "]" 						 { return (int) ']'; }
 "{" 						 { return (int) '{'; }
