@@ -1,0 +1,39 @@
+ 
+//identificadores
+E_
+E_1
+Etapa_1
+_etapa_1
+
+//int
+1
++1
+-1
+00
+123123123123131231231
+
+//float
+1.1
+0.1
+3453534534.353535345345
+34523423423423.2342342342342E+112313123123
+34523423423423.2342342342342E-112313123123
+34523423423423.2342342342342e+112313123123
+
+//strings
+"Alo Alo Alo"
+""
+"All+ !@£$%%^^&_12323471"
+" 1231233 "
+
+
+//comentarios
+// ignorar este comentário simples
+/* ignorar este comentário
+Complexo e 
+contar as linhas */
+
+
+
+
+
