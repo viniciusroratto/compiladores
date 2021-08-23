@@ -1,5 +1,5 @@
-  # Nomes: Tatiana Pacheco de Almeida - Vinícius Roratto Carvalho
-  # Matriculas:  - 00160094
+  # GRUPO F
+  # Nomes: Tatiana Pacheco de Almeida (252561) - Vinícius Roratto Carvalho (00160094)
   # disciplina: INF01147 - Compiladores - Prof. Lucas Schnorr
 
 
@@ -18,6 +18,7 @@ main.o:
 	
 clean:
 	rm etapa1 lex.yy.c lex.yy.o main.o
+	
 
 
 
